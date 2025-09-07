@@ -7,7 +7,7 @@ document.getElementById("gradeForm").addEventListener("submit", async function(e
   const failures = parseInt(document.getElementById("failures").value);
 
   try {
-    const response = await fetch("https://student-grade-backend.onrender.com/predict", { // <-- add /predict
+    const response = await fetch("https://student-grade-backend.onrender.com/predict", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -20,8 +20,9 @@ document.getElementById("gradeForm").addEventListener("submit", async function(e
     }
 
     const data = await response.json();
-    document.getElementById("result").innerText = `Predicted Grade: ${data.grade}`;
 
+    // ✅ Backend returns { "grade": "some_value" }
+    document.getElementById("result").innerText = `Predicted Grade: ${data.grade}`;
   } catch (error) {
     console.error("Error:", error);
     document.getElementById("result").innerText = "⚠️ Could not fetch prediction. Try again.";
