@@ -20,8 +20,7 @@ document.getElementById("gradeForm").addEventListener("submit", async function(e
     }
 
     const data = await response.json();
-
-    // ✅ Backend returns { "grade": "some_value" }
+    console.log("Response from backend:", data); // Debug log
     document.getElementById("result").innerText = `Predicted Grade: ${data.grade}`;
   } catch (error) {
     console.error("Error:", error);
